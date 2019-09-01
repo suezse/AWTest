@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.join(__dirname, '/src/index.tsx'),
+  entry: ['@babel/polyfill', path.join(__dirname, '/src/index.tsx')],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/dist'),
@@ -54,6 +54,7 @@ module.exports = {
     historyApiFallback: true,
     inline: true,
     hot: true,
+    disableHostCheck: true,
   },
   devtool: 'source-map',
 };
