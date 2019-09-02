@@ -80,7 +80,7 @@ class Invitation extends React.Component<IProps, IState> {
         .catch(error => {
           this.setState({
             isSending: false,
-            errLog: error.response.data.errorMessage,
+            errLog: error.response ? error.response.data.errorMessage : 'Request Failed!',
           });
         });
     });
@@ -97,7 +97,8 @@ class Invitation extends React.Component<IProps, IState> {
         <Modal
           title="Request an invite"
           destroyOnClose
-          width={400}
+          // width={400}
+          className={/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? "" : "modalWidth"}
           centered
           footer={null}
           maskClosable={false}
@@ -133,6 +134,7 @@ class Invitation extends React.Component<IProps, IState> {
             </Form.Item>
             <Form.Item>
               <Button
+                className="sendBtn"
                 type="primary"
                 htmlType="submit"
                 block
@@ -148,7 +150,8 @@ class Invitation extends React.Component<IProps, IState> {
         </Modal>
         <Modal
           title="All done!"
-          width={400}
+          // width={400}
+          className={/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? "" : "modalWidth"}
           centered
           footer={null}
           maskClosable
